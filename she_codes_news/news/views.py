@@ -17,13 +17,14 @@ class IndexView(generic.ListView):
         context['old_stories'] = NewsStory.objects.all().order_by ('pub_date')[:4]
         return context
 
-    #NOTE 
+   
     #no specific story, it's all listed, no http responses, no import?  check examples, can use function based views.... similar
     #where to go to find index template, in class index view 
 
 
 class StoryView(generic.DetailView):
-    model = NewsStorytemplate_name = 'news/story.html'
+    model = NewsStory
+    template_name = 'news/story.html'
     context_object_name = 'story'
 
 class AddStoryView(generic.CreateView):

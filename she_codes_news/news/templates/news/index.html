@@ -33,6 +33,8 @@
         {% endif %}
     </div>
 
-    <a href="{% url 'news:newStory' %}">Write New Story</a>
+     <!-- how to define logged in user to only show if user is logged in-->
+    <a href="{% url 'news:newStory' %}">Write New Story</a> 
+    
 
 {% endblock %}
