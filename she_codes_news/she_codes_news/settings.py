@@ -71,8 +71,8 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = 'news.index'
-LOGOUT_REDIRECT_URL = 'news.index'  #page 4 of 7 users app - **** is this in the right spot? ****
+LOGIN_REDIRECT_URL = 'news:index'
+LOGOUT_REDIRECT_URL = 'news:index'  #page 4 of 7 users app 
 
 WSGI_APPLICATION = 'she_codes_news.wsgi.application'
 

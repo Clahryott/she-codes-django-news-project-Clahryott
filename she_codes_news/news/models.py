@@ -13,8 +13,10 @@ class NewsStory(models.Model):
     )
     pub_date = models.DateTimeField()
     content = models.TextField()
+    image_url = models.URLField()
 
-
+    def get_absolute_url(self):
+        return reverse('news:story', kwards={'pk':})
 #NOTE
 #what is textfield? no definitions  - no answer 
 

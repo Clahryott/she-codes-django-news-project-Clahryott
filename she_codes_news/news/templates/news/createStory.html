@@ -3,10 +3,13 @@
 {% block content %}
 
 <form action="" method="post">1
-
+{% if request.user.is_authenticated %}
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="submit">
+{% endif %}
 </form>
 
 {% endblock %}
+
+<!--templates are all the html and how the data will look, python helps grab those stories -->
