@@ -16,7 +16,7 @@ class NewsStory(models.Model):
     image_url = models.URLField()
 
     def get_absolute_url(self):
-        return reverse('news:story', kwards={'pk':})
+        return reverse('news:story', kwards={'pk':}) #rest in slack
 #NOTE
 #what is textfield? no definitions  - no answer 
 
