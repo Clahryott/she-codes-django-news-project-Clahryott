@@ -13,8 +13,8 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) #this potentially could be the individual in () 
-        context['latest_stories'] = NewsStory.objects.all()[:4]
-        context['old_stories'] = NewsStory.objects.all().order_by ('pub_date')[:4]
+        context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
+        context['all_stories'] = NewsStory.objects.all().order_by('-pub_date')
         return context
 
    
@@ -31,8 +31,12 @@ class AddStoryView(generic.CreateView):
     form_class = StoryForm
     context_object_name = 'storyForm'
     template_name = 'news/createStory.html'
-    success_url = reverse_lazy('news:index')
+    success_url = reverse_lazy('news:index') #
 
     def form_valid(self, form):
         form.instance.author = self.request.user #means the user that is logged in
         return super().form_valid(form)
+
+#-----NOTES------
+#build a comment system
+#https://djangocentral.com/creating-comments-system-with-django/
