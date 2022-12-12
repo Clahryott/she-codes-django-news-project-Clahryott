@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import NewsStory
+from .models import NewsStory, Comment
 
 class StoryForm(ModelForm):
     class Meta:
@@ -12,6 +12,9 @@ class StoryForm(ModelForm):
         }
 
 
-#----NOTES-----
 #build a comment system
-#https://djangocentral.com/creating-comments-system-with-django/
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'email', 'body']
+        labels = {'name':('Name'),'email':('Email'), 'body': ('Write your Comment'),}

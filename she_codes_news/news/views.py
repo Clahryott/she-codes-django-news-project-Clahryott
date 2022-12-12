@@ -27,6 +27,32 @@ class StoryView(generic.DetailView):
     template_name = 'news/story.html'
     context_object_name = 'story'
 
+    ##build a comment system
+    #1 comment
+    def post_detail(request, slug):
+        post = get_object_or_404(NewsStory, slug=slug)
+        comments = post.comments.filter(active=True)
+        template_name = 'news/story.html'
+        new_comment = None
+        #comment posted
+        if request.method == 'POST':
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+
+                # Create comment object, but don't save to database yet
+                new_comment = comment_form.save(commit=False)
+                # Assign the current post to comment
+                new_comment.post = post
+                # Save the comment to the database
+                new_comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(request, template_name, {'NewsStory': NewsStory, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
+
+
+#class StoryView(generic.DetailView):
+
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
     context_object_name = 'storyForm'
@@ -36,7 +62,3 @@ class AddStoryView(generic.CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user #means the user that is logged in
         return super().form_valid(form)
-
-#-----NOTES------
-#build a comment system
-#https://djangocentral.com/creating-comments-system-with-django/
