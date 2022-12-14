@@ -20,9 +20,9 @@
 {% for comment in comments %}
 <div>
     <p>
-    {{ comment.commenter_name }} <!-- should it be comment_name or commenter?-->
+    {{ comment.name }} <!-- should it be comment_name or commenter?-->
     <span>
-    {{ comment.comment_created_on }}
+    {{ comment.created_on }}
     </span>
 </p>
 {{ comment.body | linebreaks }}

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="" method="post">1
+<form action="" method="post">
 {% if request.user.is_authenticated %}
     {% csrf_token %}
     {{ form.as_p }}

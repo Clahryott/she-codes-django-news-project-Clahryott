@@ -2,7 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
-
+from users.models import CustomUser
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html' #which is telling me to use the index view
@@ -15,6 +15,7 @@ class IndexView(generic.ListView):
         context = super().get_context_data(**kwargs) #this potentially could be the individual in () 
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         context['all_stories'] = NewsStory.objects.all().order_by('-pub_date')
+        context['authors'] = CustomUser.objects.all()
         return context
 
    
