@@ -14,7 +14,21 @@
         <img src="{{ story.image_url }}">
         {{ story.content|linebreaks }}
     </div>
+    <!-- added edit story function -->
+    <a href="{% url 'blogs:edit_post' post.id %}">Edit post</a>
 </div>
+
+<!-- Stories by author section -->
+    <div>
+        {% if story_author %}
+            {% for author in story_authors %}
+                <a href="{% url 'users:user_profile' author.id %}">{{ author }}</a>
+            {% endfor %}
+        {% else %}
+            <p>No authors</p>
+        {% endif %}
+    </div>
+
 
 <!-- Comment -->
 {% for comment in comments %}

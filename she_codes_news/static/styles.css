@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
 
 body {
-    background-color: rgb(240, 239, 239);
+    background-color: rgb(240, 239, 239); /* change background colour , think of your styling */
 }
 
 header {
@@ -11,24 +11,25 @@ header {
     border-bottom: 1px solid #000;
 }
 
-img {
+/* img {
     filter: grayscale(100%);
-}
+} */   
+/* do i need to filter over images? Can I create a colour filter for images */
 
 h1 {
-    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'Montserrat Subrayada', sans-serif;  /* what over arching font to I want across the whole website? */
     text-decoration: none;
-    font-size: 4rem;
-    margin: 0;
+    font-size: 4rem; /* what is 4rem? */
+    margin: 0; /* what is the min margin requirement? */
 }
 
 h2 {
-   font-family: 'Montserrat Subrayada', sans-serif; 
+   font-family: 'Montserrat Subrayada', sans-serif; /* CHECK */
 }
 
 h3 {
-    font-size: 2rem;
-    margin: 0;
+    font-size: 2rem; /* CHECK */
+    margin: 0; /* CHECK */
 }
 
 #header-text {
@@ -44,11 +45,11 @@ nav {
 }
 
 a {
-    margin: 2px;
+    margin: 2px; /* CHECK */
     text-decoration: none;
-    color: #000;
+    color: #000; /* CHECK */
 }
 
 a, p {
-    font-family: monospace;
+    font-family: monospace; /* CHECK */
 }

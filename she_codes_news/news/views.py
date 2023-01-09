@@ -18,6 +18,40 @@ class IndexView(generic.ListView):
         context['authors'] = CustomUser.objects.all()
         return context
 
+    #edit story function
+class EditStoryView(generic.UpdateView):
+    form_class = StoryForm
+    model = NewsStory
+    context_object_name = 'story'
+    template_name = 'news/edit_story.html'
+    success_url = reverse_lazy("news:newsStory")
+
+        def form_valid(self, form):
+            """Save the form and redirect to the success URL"""
+            # Save the updated form pk = self.kwargs.get("pk")
+            story = get_object_or_404(NewsStory,pk=pk)
+            form.instance.story = story
+            return super ().form_valid(form)
+        
+        def get_success_rul(self) -> str:
+            pk = self.kwargs.get("pk")
+            return reverse_lazy("news:story",kwargs={"pk":pk}) 
+
+    #TRIED edit here
+    #def edit_story(request, story_id):
+        #post = NewsStory.objects.get(id=story_id)
+
+        #if request.method != 'POST':
+            #form = StoryForm(instance=post)
+
+       # else:
+            #form = StoryForm(instance=post, data=request.POST) 
+            #if form.is_valid():
+                #form.save()
+                # return redirect('news:index')
+
+        #context = {'story': story, 'index': index, 'form': form}
+        #return render(request, 'news/edit_story.html', context)
    
     #no specific story, it's all listed, no http responses, no import?  check examples, can use function based views.... similar
     #where to go to find index template, in class index view 

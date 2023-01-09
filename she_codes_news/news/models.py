@@ -14,6 +14,9 @@ class NewsStory(models.Model):
     content = models.TextField()
     image_url = models.URLField(blank=True)
 
+    def __str__(self): #display the story title - self is the item class is changing***
+        return self.title
+
     # def get_absolute_url(self):
     #     return reverse('news:story', kwargs={'pk':self.pk}) 
 
