@@ -18,7 +18,7 @@ class IndexView(generic.ListView):
         context['authors'] = CustomUser.objects.all()
         return context
 
-    #1st attempt at edit story function
+    #2nd attempt at edit story function
 #class EditStoryView(generic.UpdateView):
     #form_class = StoryForm
     #model = NewsStory
@@ -55,7 +55,8 @@ class EditStoryView(generic.UpdateView):
     def get_success_url(self) -> str:
         pk = self.kwargs.get("pk")
         return reverse_lazy("news:story", kwargs={"pk":pk})
-    #TRIED edit here
+    
+    #1st attempt TRIED edit here
     #def edit_story(request, story_id):
         #post = NewsStory.objects.get(id=story_id)
 
