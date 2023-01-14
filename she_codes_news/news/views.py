@@ -18,25 +18,43 @@ class IndexView(generic.ListView):
         context['authors'] = CustomUser.objects.all()
         return context
 
-    #edit story function
+    #1st attempt at edit story function
+#class EditStoryView(generic.UpdateView):
+    #form_class = StoryForm
+    #model = NewsStory
+    #context_object_name = 'story'
+    #template_name = 'news/edit_story.html'
+    #success_url = reverse_lazy("news:newsStory")
+
+        #def form_valid(self, form):
+            #"""Save the form and redirect to the success URL"""
+            # Save the updated form pk = self.kwargs.get("pk")
+            #story = get_object_or_404(NewsStory,pk=pk)
+            #form.instance.story = story
+            #return super ().form_valid(form)
+        
+        #def get_success_rul(self) -> str:
+            #pk = self.kwargs.get("pk")
+            #return reverse_lazy("news:story",kwargs={"pk":pk}) 
+ 
 class EditStoryView(generic.UpdateView):
     form_class = StoryForm
     model = NewsStory
     context_object_name = 'story'
-    template_name = 'news/edit_story.html'
+    template_name = 'news/editStory.html'
     success_url = reverse_lazy("news:newsStory")
 
-        def form_valid(self, form):
-            """Save the form and redirect to the success URL"""
-            # Save the updated form pk = self.kwargs.get("pk")
-            story = get_object_or_404(NewsStory,pk=pk)
-            form.instance.story = story
-            return super ().form_valid(form)
-        
-        def get_success_rul(self) -> str:
-            pk = self.kwargs.get("pk")
-            return reverse_lazy("news:story",kwargs={"pk":pk}) 
+    def form_valid(self, form):
+        """Save the form and redirect to the success URL."""
+        # Save the updated form
+        pk = self.kwargs.get("pk")
+        story = get_object_or_404(NewsStory, pk=pk)
+        form.instance.story = story
+        return super().form_valid(form) 
 
+    def get_success_url(self) -> str:
+        pk = self.kwargs.get("pk")
+        return reverse_lazy("news:story", kwargs={"pk":pk})
     #TRIED edit here
     #def edit_story(request, story_id):
         #post = NewsStory.objects.get(id=story_id)
