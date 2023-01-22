@@ -6,6 +6,8 @@
 {% endblock %}
 {% block content %}
 
+<main>
+    <!-- STORY-->
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
     <h4>{{ story.author }}</h4>
@@ -14,6 +16,7 @@
         <img src="{{ story.image_url }}">
         {{ story.content|linebreaks }}
     </div>
+    
     <!-- added edit story function -->
     <a href="{% url 'blogs:edit_post' post.id %}">Edit post</a>
 </div>

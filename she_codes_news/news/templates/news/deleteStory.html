@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!------------ DELETE STORY BLOCK ------------>
+<main>
+
+    {% if request.user.is_authenticated %}
+    <!-- Only load for users -->
+        {% if request.user == story.author %}
+            <!-- Only load if the user and author are the same -->
+            <form class="delete_confirm" method="post">
+                {% csrf_token %}
+                <h2>Hi {{ story.author}}!</h2>
+                <h3>Are you sure you want to delete: <strong>"<a href="{% url 'news:story' story.id %}">{{ story.title }}</a>"?</strong></h3>
+                
+                <!------------ BUTTON BLOCK ------------>
+                <input type="submit" value="Confirm" class="submit_button">
+                <button class="cancel_button"><a href="{% url 'news:story' story.id %}">Cancel</a></button>
+            </form>
+        {% else %}
+            <!-- Only load for visitors -->
+            <meta http-equiv="refresh" content="0; URL={% url 'news:story' story.id %}" />
+        {% endif %}
+    {% endif %}
+</main>
+{% endblock %}
