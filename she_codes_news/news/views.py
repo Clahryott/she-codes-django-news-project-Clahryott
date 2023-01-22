@@ -116,3 +116,18 @@ class AddStoryView(generic.CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user #means the user that is logged in
         return super().form_valid(form)
+
+#***** to add in ***
+
+#class AuthorStories (generic.ListView): 
+    #template_name = 'news/authorstories.html'
+    #context_object_name = 'stories'
+
+    #def get_queryset(self):
+       #return NewsStory.objects.filter(author=self.kwargs['pk'])
+       
+#class DeleteStoryView(generic.DeleteView):
+    #model = NewsStory
+    #context_object_name = 'story'
+    #template_name = 'news/deleteStory.html' 
+    #success_url = reverse_lazy('news:index')

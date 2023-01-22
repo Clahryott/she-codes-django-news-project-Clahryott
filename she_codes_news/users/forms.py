@@ -5,7 +5,7 @@ from .models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'email']
+        fields = ['username', 'email'] # can add 'bio', 'profile_picture', LinkedIn, Instagram - potentially === would need to create for reference can also be used in UserChangeForm
         
 class CustomUserChangeForm(UserChangeForm):
     class Meta:

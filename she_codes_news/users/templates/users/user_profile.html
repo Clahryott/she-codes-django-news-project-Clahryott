@@ -5,3 +5,21 @@
 {% endblock %}
 
 <!-- add profile info here from views -->
+
+<!-- <p> Username: {{user.username}}</p>
+<p> Email: {{user.email}}</p>
+<p> Profile Picture: <img src="{{ user.profile_picture}}"> </p>
+<a href="{% url 'users:editAccount' request.user.id %}">Edit Account</a>
+<p> Stories: </p>
+
+    <div id="all-stories">
+        {% if user_stories %}
+            {% for story in user_stories %}
+                {% include "news/storyCard.html" with story=story %}
+                <p>{{ story.title }}</p> ???? to include or not?
+                {% endfor %}
+                {% else %}
+                    <p>No stories are available.</p>
+                {% endif %}
+            </div>
+        {% endblock %} -->

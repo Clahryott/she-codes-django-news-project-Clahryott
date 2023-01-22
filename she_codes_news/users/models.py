@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-        pass
+        pass   #remind myself what this iis and why I don't need a long list of fields
         
         def __str__(self):
             return self.username

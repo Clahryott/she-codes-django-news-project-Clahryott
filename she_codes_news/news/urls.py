@@ -10,6 +10,12 @@ urlpatterns = [ #this is a specific url page
     #path('story/int:pk>/edit',views.EditStoryView.as_view(),name='editStory') slight amendment
     path('story/<int:pk>/edit/', views.EditStoryView.as_view(), name='editStory'),
     #path('edit_story/<int:story_id>/', views.edit_story, name='edit_story'), #didn't work- changed to above check naming convention???? /// 
+
+    #to potentially add *****
+    
+    #path('all-stories/', views.All_stories_View.as_view(), name='allstories' ),
+    #path('authors/<int:pk>/stories', views.AuthorStories.as_view(), name= 'authorstories' ),
+    #path('<int:pk>/delete', views.DeleteStoryView.as_view(), name='deleteStory')
 ]
 
 #no patterns/ path for each question
