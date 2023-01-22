@@ -1,13 +1,23 @@
+   <!--this is the overarching navigation across the whole website-->
+
 <nav>
     <a href="{% url 'news:index' %}">Home</a>
+    <a href="{% url 'news:allStories' %}">Stories</a>
     {% if request.user.is_authenticated %}
-        <a href="{% url 'users:user_profile' request.user.id %}">{{ user.username }}</a>
+    <!-- only to appear for users -->
+        <a href="{% url 'users:user_profile' request.user.id %}">{{ request.user.username }}</a>
+        {% if request.user.is_superuser %}
+        <!-- for ADMIN only -->
+            <a href="/admin/">Admin</a>
+        {% else %}
+           <!-- if not ADMIN, then nothing -->
+        {% endif %}
         <a href="{% url 'logout' %}">Logout</a>
     {% else %}
         <a href="{% url 'login' %}">Login</a>
     {% endif %}
-    </nav>
+</nav>
 
-    <!--this is the overarching navigation across the whole website-->
+ 
 
     
