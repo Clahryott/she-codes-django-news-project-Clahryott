@@ -6,6 +6,12 @@ from .forms import CustomUserCreationForm
 #from .forms import CustomerUserChangeForm ----= where is this?
 from news.models import NewsStory
 
+# to add ???
+
+#from django.shortcuts import render, redirect
+#from django.contrib.auth import views as auth_views
+#from django.contrib.auth.forms import PasswordChangeForm
+
 
 class CreateAccountView(CreateView): #class based view
 	form_class = CustomUserCreationForm
@@ -30,4 +36,17 @@ class AccountView(generic.DetailView): #specific user profile user (account or a
 		context = super().get_context_data(**kwargs)
 		context['user_stories'] = NewsStory.objects.filter(author=self.kwargs['pk'])
 		return context
+
+def ChangePasswordDoneView(request):
+    return render(request, 'users/changePassword_done.html', {})
+
+def ChangePasswordView(request):
+    if request.method == 'POST':
+        form = auth_views.PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('users:changePassword_done')
+    else:
+        form = auth_views.PasswordChangeForm(request.user)
+    return render(request, 'users/changePassword.html', {'form': form})
 
