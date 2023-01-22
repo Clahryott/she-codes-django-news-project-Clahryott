@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-        pass   #remind myself what this iis and why I don't need a long list of fields
+        pass   #remind myself what this iis and why I don't need a long list of fields - do I need it? Kristy says no
         
         def __str__(self):
             return self.username

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CreateAccountView, AccountView
+from .views import CreateAccountView, AccountView, ChangePasswordDoneView, ChangePasswordView #still needs to be added
 
 app_name = 'users'
 
